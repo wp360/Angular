@@ -113,6 +113,33 @@ TypeError: Cannot read property 'apply' of undefined
 * 1. 安装ui-router
 `bower install --save ui-router`
 
+## 路由模块总结扩展
+```js
+// src/script/config/router.js
+'use strict';
+
+angular.module('app').config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+  $stateProvider.state('main', {
+    url: '/main',
+    templateUrl: 'view/main.html',
+    controller: 'mainCtrl'
+  });
+  // 默认跳转
+  $urlRouterProvider.otherwise('main');
+}]);
+
+```
+
+## 移动端自适应
+```html
+<!-- 使用js定义字体大小，再用rem设置 -->
+<script type="text/javascript">
+  document.getElementsByTagName('html')[0].style.fontSize = window.screen.width / 10 + 'px';
+</script>
+```
+
+## 指令：app-head
+
 ## 上传github
 ```
 git remote add origin https://github.com/wp360/Angular.git
