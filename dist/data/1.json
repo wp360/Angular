@@ -1,0 +1,15 @@
+{
+  "sites": [{
+      "name": "google",
+      "url": "www.google.com"
+    },
+    {
+      "name": "百度",
+      "url": "www.baidu.com"
+    },
+    {
+      "name": "微博",
+      "url": "www.weibo.com"
+    }
+  ]
+}
