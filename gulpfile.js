@@ -18,31 +18,63 @@ gulp.task('lib', function () {
 });
 
 // gulp 3
-gulp.task('html',function(){
-  gulp.src(app.srcPath + '**/*.html')
+// gulp.task('html',function(){
+//   gulp.src(app.srcPath + '**/*.html')
+//     .pipe(gulp.dest(app.devPath))
+//     .pipe(gulp.dest(app.prdPath))
+//     .pipe($.connect.reload());
+// });
+
+gulp.task('html', async () => {
+  await gulp.src(app.srcPath + '**/*.html')
     .pipe(gulp.dest(app.devPath))
     .pipe(gulp.dest(app.prdPath))
     .pipe($.connect.reload());
 });
 
-gulp.task('json',function(){
-  gulp.src(app.srcPath + 'data/**/*.json')
+// gulp.task('json',function(){
+//   gulp.src(app.srcPath + 'data/**/*.json')
+//     .pipe(gulp.dest(app.devPath + 'data'))
+//     .pipe(gulp.dest(app.prdPath + 'data'))
+//     .pipe($.connect.reload());
+// });
+
+gulp.task('json', async () => {
+  await gulp.src(app.srcPath + 'data/**/*.json')
     .pipe(gulp.dest(app.devPath + 'data'))
     .pipe(gulp.dest(app.prdPath + 'data'))
     .pipe($.connect.reload());
 });
 
-gulp.task('less', function () {
-  gulp.src(app.srcPath + 'style/index.less')
-    .pipe($.less())
+// gulp.task('less', function () {
+//   gulp.src(app.srcPath + 'style/index.less')
+//     .pipe($.less()) // less编译
+//     .pipe(gulp.dest(app.devPath + 'css'))
+//     .pipe($.cssmin()) // 压缩
+//     .pipe(gulp.dest(app.prdPath + 'css'))
+//     .pipe($.connect.reload());
+// });
+
+gulp.task('less', async () => {
+  await gulp.src(app.srcPath + 'style/index.less')
+    .pipe($.less()) // less编译
     .pipe(gulp.dest(app.devPath + 'css'))
     .pipe($.cssmin()) // 压缩
     .pipe(gulp.dest(app.prdPath + 'css'))
     .pipe($.connect.reload());
 });
 
-gulp.task('js', function () {
-  gulp.src(app.srcPath + 'script/**/*.js')
+// gulp.task('js', function () {
+//   gulp.src(app.srcPath + 'script/**/*.js')
+//     .pipe($.concat('index.js'))
+//     .pipe(gulp.dest(app.devPath + 'js'))
+//     .pipe($.uglify()) // 压缩
+//     .pipe(gulp.dest(app.prdPath + 'js'))
+//     .pipe($.connect.reload());
+// });
+
+gulp.task('js', async () => {
+  await gulp.src(app.srcPath + 'script/**/*.js')
     .pipe($.concat('index.js'))
     .pipe(gulp.dest(app.devPath + 'js'))
     .pipe($.uglify()) // 压缩
@@ -52,6 +84,14 @@ gulp.task('js', function () {
 
 gulp.task('image', function () {
   gulp.src(app.srcPath + 'image/**/*')
+    .pipe(gulp.dest(app.devPath + 'image'))
+    .pipe($.imagemin())
+    .pipe(gulp.dest(app.prdPath + 'image'))
+    .pipe($.connect.reload());
+});
+
+gulp.task('image', async () => {
+  await gulp.src(app.srcPath + 'image/**/*')
     .pipe(gulp.dest(app.devPath + 'image'))
     .pipe($.imagemin())
     .pipe(gulp.dest(app.prdPath + 'image'))
@@ -91,7 +131,7 @@ gulp.task('build', gulp.series(gulp.parallel('image', 'js', 'less', 'lib', 'html
 
 // gulp 4
 // server任务，目录为dist，入口文件为dist/index.html，port 3000
-gulp.task('server', function() {
+gulp.task('server', () => {
   $.connect.server({
     root: [app.devPath],
     livereload: true,
@@ -110,6 +150,6 @@ gulp.task('watch', () => {
 });
 
 // dev任务，启动开发环境
-gulp.task('dev', gulp.series(gulp.parallel('watch', 'server')));
+gulp.task('dev', gulp.series(gulp.parallel('build', 'watch', 'server')));
 
 gulp.task('default', gulp.series('server'));

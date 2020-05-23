@@ -102,5 +102,30 @@ TypeError: Cannot read property 'apply' of undefined
 ```
 * 解决办法： 安装 npm i gulp-cli -g
 
+* 启动项目 gulp dev
+
 #### gulp3 与 gulp4的区别
 [gulp4在前端工程化中的应用](https://juejin.im/post/5ce92417f265da1ba328a0e0)
+
+## 模块划分
+
+## 路由配置
+* 1. 安装ui-router
+`bower install --save ui-router`
+
+## 上传github
+```
+git remote add origin https://github.com/wp360/Angular.git
+
+git checkout -b lagou
+
+git status
+
+git add .
+
+git commit -m "项目初始化"
+
+git push
+
+git push --set-upstream origin lagou
+```

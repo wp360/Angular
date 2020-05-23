@@ -1,1 +1,1 @@
-console.log("使用gulp"),console.log("测试gulp");
+"use strict";angular.module("app",["ui.router"]),angular.module("app").config(["$stateProvider","$urlRouterProvider",function(r,e){r.state("main",{url:"/main",templateUrl:"view/main.html",controller:"mainCtrl"}),e.otherwise("main")}]);
