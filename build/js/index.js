@@ -18,6 +18,14 @@ angular.module('app').controller('mainCtrl', ['$scope', function($scope) {
 
 }]);
 'use strict';
+angular.module('app').directive('appFoot', [function(){
+  return {
+    restrict: 'A',
+    replace: true,
+    templateUrl: 'view/template/foot.html'
+  };
+}]);
+'use strict';
 angular.module('app').directive('appHead', [function(){
   return {
     restrict: 'A',

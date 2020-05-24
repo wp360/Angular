@@ -140,6 +140,8 @@ angular.module('app').config(['$stateProvider', '$urlRouterProvider', function (
 
 ## 指令：app-head
 
+## 指令：app-foot
+
 ## 上传github
 ```
 git remote add origin https://github.com/wp360/Angular.git
