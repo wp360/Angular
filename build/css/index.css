@@ -151,6 +151,30 @@ a:hover {
   top: 2px;
   margin-right: 6px;
 }
+.position-list .item {
+  padding: 7px 3px;
+  list-style: none;
+  border-bottom: 1px solid #ddd;
+}
+.position-list .item .logo {
+  width: 1.73333333rem;
+  height: 1.73333333rem;
+  margin-right: 13px;
+}
+.position-list .item .icon {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 0.8rem;
+  height: 0.74666667rem;
+  top: 14px;
+  right: 12px;
+}
+.position-list .item .icon.star {
+  background-image: url(../image/star.png);
+}
+.position-list .item .icon.star-active {
+  background-image: url(../image/star-active.png);
+}
 .bg-w {
   background-color: #fff;
 }

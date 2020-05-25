@@ -142,6 +142,22 @@ angular.module('app').config(['$stateProvider', '$urlRouterProvider', function (
 
 ## 指令：app-foot
 
+## 指令：app-position-list
+* 首页中间列表
+* 数据绑定
+```js
+// src/script/controller/mainCtrl.js
+'use strict';
+angular.module('app').controller('mainCtrl', ['$scope', function($scope) {
+  $scope.abc = 1; // 属性abc
+}]);
+
+// main.html数据展示
+// {{abc}}   // 1
+// <div ng-bind="abc"></div> // 1
+// <input type="text" ng-model="abc">  // 输入框里显示1
+```
+
 ## 上传github
 ```
 git remote add origin https://github.com/wp360/Angular.git
