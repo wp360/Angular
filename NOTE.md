@@ -137,6 +137,10 @@ angular.module('app').config(['$stateProvider', '$urlRouterProvider', function (
   document.getElementsByTagName('html')[0].style.fontSize = window.screen.width / 10 + 'px';
 </script>
 ```
+## 指令 （directive）
+> 定义： 通过HTML标签、属性、样式或注释使Angular编译器来为指定的DOM元素绑定特定的行为，甚至是改变DOM元素和它的子元素。
+> 内置指令： ng-model、ng-bind、ng-click、ng-class、ng-if、ng-hide、ng-repeat
+> 自定义指令常用属性： restrict、scope、template、templateUrl、link、transclude
 
 ## 指令：app-head
 
@@ -144,7 +148,8 @@ angular.module('app').config(['$stateProvider', '$urlRouterProvider', function (
 
 ## 指令：app-position-list
 * 首页中间列表
-* 数据绑定
+* 数据绑定 (data-binding)
+> 定义：在Angular应用中，自动同步视图组件与数据的行为
 ```js
 // src/script/controller/mainCtrl.js
 'use strict';
@@ -156,6 +161,55 @@ angular.module('app').controller('mainCtrl', ['$scope', function($scope) {
 // {{abc}}   // 1
 // <div ng-bind="abc"></div> // 1
 // <input type="text" ng-model="abc">  // 输入框里显示1
+```
+
+## 职位页面
+* 1. 新建position.html
+* 2. 添加路由设置
+```js
+// router.js
+.state('position', {
+    url: '/position/:id',
+    templateUrl: 'view/position.html',
+    controller: 'positionCtrl'
+  });
+```
+* 3. 添加控制器positionCtrl
+```js
+'use strict';
+angular.module('app').controller('positionCtrl', ['$scope', function ($scope) {
+
+}]);
+```
+* 4. 添加跳转链接
+```
+// positionList.html
+ui-sref="position({id:item.id})"
+```
+* 5. 职位页面制作
+* 6. 添加头部模板
+* 7. 设置头部模板指定
+```js
+// src/script/directive/headBar.js
+'use strict';
+angular.module('app').directive('appHeadBar', [function () {
+  return {
+    restrict: 'A',
+    replace: true,
+    templateUrl: 'view/template/headBar.html',
+    scope: {
+      text: '@' // 单项绑定的前缀标识符
+      // text: '=' 双向数据绑定前缀标识符
+      // text: '&' 绑定函数方法的前缀标识符
+    },
+    link: function ($scope) {
+      $scope.back = function () {
+        window.history.back();
+      };
+    }
+  };
+}]);
+
 ```
 
 ## 上传github

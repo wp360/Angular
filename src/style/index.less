@@ -3,6 +3,7 @@
 @import 'template/foot.less';
 @import 'template/positionList.less';
 @import 'property.less';
+@import 'position.less';
 
 .fs(@px) {
   font-size: unit(@px / 37.5, rem);
@@ -62,4 +63,8 @@ body {
 body {
   background-color: @bodyBgColor;
   .fs(16);
+}
+
+button {
+  outline-width: 0;
 }

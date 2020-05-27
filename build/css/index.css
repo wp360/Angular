@@ -226,6 +226,32 @@ a:hover {
 .va-b {
   vertical-align: bottom;
 }
+.bottom-btn {
+  position: fixed;
+  height: 1.2rem;
+  background-color: #12d5b5;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  border: none;
+}
+.position-desc {
+  margin-top: 10px;
+}
+.position-desc h5 {
+  font-size: 0.42666667rem;
+  border-bottom: 1px solid #ccc;
+  margin-top: 0;
+  padding-left: 10px;
+  height: 1.06666667rem;
+  line-height: 1.06666667rem;
+}
+.position-desc pre {
+  padding-left: 10px;
+  margin-left: 0;
+  padding-bottom: 20px;
+}
 html,
 body {
   height: 100%;
@@ -235,4 +261,7 @@ body {
 body {
   background-color: #eee;
   font-size: 0.42666667rem;
+}
+button {
+  outline-width: 0;
 }

@@ -8,6 +8,10 @@ angular.module('app').config(['$stateProvider', '$urlRouterProvider', function (
     url: '/main',
     templateUrl: 'view/main.html',
     controller: 'mainCtrl'
+  }).state('position', {
+    url: '/position/:id',
+    templateUrl: 'view/position.html',
+    controller: 'positionCtrl'
   });
   // 默认跳转
   $urlRouterProvider.otherwise('main');
@@ -37,6 +41,10 @@ angular.module('app').controller('mainCtrl', ['$scope', function($scope) {
   }];
 }]);
 'use strict';
+angular.module('app').controller('positionCtrl', ['$scope', function ($scope) {
+
+}]);
+'use strict';
 angular.module('app').directive('appFoot', [function(){
   return {
     restrict: 'A',
@@ -52,6 +60,23 @@ angular.module('app').directive('appHead', [function(){
     templateUrl: 'view/template/head.html'
   };
 }]);
+'use strict';
+angular.module('app').directive('appHeadBar', [function () {
+  return {
+    restrict: 'A',
+    replace: true,
+    templateUrl: 'view/template/headBar.html',
+    scope: {
+      text: '@'
+    },
+    link: function ($scope) {
+      $scope.back = function () {
+        window.history.back();
+      };
+    }
+  };
+}]);
+
 'use strict';
 angular.module('app').directive('appPositionList', [function () {
   return {
